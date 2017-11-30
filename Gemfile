@@ -23,7 +23,9 @@ group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platform: :mri
 end
-
+group :production do
+  gem 'pg'
+end
 group :development do
   
   gem 'web-console', '>= 3.3.0'
