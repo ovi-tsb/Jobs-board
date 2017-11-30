@@ -2,23 +2,34 @@ class JobsController < ApplicationController
   before_action :find_job, only: [:show, :edit, :update, :destroy]
   
   def index
-    if params[:category].blank?
+    if params[:category].blank? && params[:q].blank?
       @jobs = Job.all.order("created_at DESC")
-    else
+    elsif params[:category]
       @category_id = Category.find_by(name: params[:category]).id
       @jobs = Job.where(category_id: @category_id).order("created_at DESC")
+    elsif params[:q]
+      search_term = params[:q]
+      @jobs = Job.search(search_term)
     end
+
+    #if params[:q]
+    #  search_term = params[:q]
+    #  @jobs = Job.search(search_term)
+    #  # return our filtered list here
+    #else
+    #  @jobs = Job.all.order("created_at DESC")
+    #end
   end
 
   def show
   end
 
   def new
-   @job = Job.new 
+   @job = current_user.jobs.build
   end
 
   def create
-    @job = Job.new(jobs_params)
+    @job = current_user.jobs.build(jobs_params)
 
     if @job.save
       redirect_to @job, notice: "Succesfully created new job"

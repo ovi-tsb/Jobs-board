@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require_tree .
+
+
+$('.nav a').on('click', function(){
+    
+    $('.navbar-toggle').click() //bootstrap 3.x 
+});
+
