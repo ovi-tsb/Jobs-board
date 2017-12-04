@@ -1,0 +1,38 @@
+.no-padding.col-lg-12.col-md-12.col-sm-12.col-xs-12  
+  .carousel.slide{:id=>"slide-images", :data => {:ride => "carousel"}}
+    .carousel-inner
+      .item.active
+        %img{:src => "assets/pexels-photo-297648.jpg", :alt => ""}/
+        .carousel-caption
+          %h3 Job that you looking for
+      .item
+        %img{:src => "assets/startup-photos.jpg", :alt => ""}/
+        .carousel-caption
+          %h3 Perfect time 
+      .item
+        %img{:src => "assets/woman-hand-smartphone-desk.jpg", :alt => ""}/
+        .carousel-caption
+          %h3 Best maching 
+      
+  
+    %a.left.carousel-control{:href => "#slide-images", :data => {:slide => "prev"}}
+      %span.glyphicon.glyphicon-chevron-left
+    %a.right.carousel-control{:href => "#slide-images", :data => {:slide => "next"}}
+      %span.glyphicon.glyphicon-chevron-right
+.wrapper-box
+  .row
+    .col-sm-12.col-md-6.col-xs-12
+      .box
+        %button.btn.btn-sm.btn-default= link_to"Looking for job ?", jobs_path
+    .col-sm-12.col-md-6.col-xs-12
+      .box
+        - if user_signed_in?
+          %button.btn.btn-sm.btn-default= link_to"Create a job", new_job_path
+        - else
+          %button.btn.btn-sm.btn-default= link_to"Create a job", new_user_session_path
+
+
+
+
+
+

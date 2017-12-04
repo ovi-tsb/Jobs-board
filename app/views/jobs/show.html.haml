@@ -8,11 +8,12 @@
       Submitted by
       = @job.user.email
     %p.time_stamp
-      At
-      = @job.created_at
+      Posted
+      = time_ago_in_words(@job.created_at)
     %button.btn.btn-default= link_to "Apply for job", @job.url
-%br/
-#links
-  = link_to "Back", root_path, class: "btn btn-sm btn-default"
-  = link_to "Edit", edit_job_path(@job), class: "btn btn-sm btn-default"
-  = link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-sm btn-default"
+  %br/
+  #links
+    = link_to "Back", :back, class: "btn btn-sm btn-default"
+    - if (user_signed_in? && (current_user.id == @job.user_id))
+      = link_to "Edit", edit_job_path(@job), class: "btn btn-sm btn-default"
+      = link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-sm btn-default"

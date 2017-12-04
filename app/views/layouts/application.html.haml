@@ -19,28 +19,33 @@
         .collapse.navbar-collapse#navbar-collapse
           - if user_signed_in?
             %ul.nav.navbar-nav.navbar-right
-              = link_to "New Job", new_job_path, class: "navbar-text navbar-right navbar-link"
+              %li= link_to "New Job", new_job_path
               %li= link_to "Sign Out", destroy_user_session_path,   method: :delete
-              %li.navbar-text.navbar-right.navbar-link
+              %li.nav-welcome
                 Welcome: 
                 = current_user.email
           - else
             %ul.nav.navbar-nav.navbar-right
               %li= link_to "Sing Up", new_user_registration_path
               %li= link_to "Sing In", new_user_session_path
-          
-        .collapse.navbar-collapse
-          %ul.nav.navbar-nav.navbar-right.category-nav
-            %li= link_to "All Jobs", root_path
-            - Category.all.each do |category|
-              %li= link_to category.name, jobs_path(category: category.name)
+          %ul.nav.navbar-nav.navbar-right
             %li
-              = form_tag root_path, method: :get, local: true, class: 'input-group'  do
+              = form_tag jobs_path, method: :get, local: true, class: 'input-group'  do
                 = text_field_tag(:q ,"" , placeholder: "  Search .. ", class: 'Search')
                 = submit_tag("Search", name: nil, class: "btn btn-sm btn-default")
+          %ul.nav.navbar-nav.navbar-left.category-nav
+            %li.dropdown
+              %a.dropdown-toggle.capitalize-name{"data-toggle" => "dropdown", :href => "#", "aria-expanded" => "true"}
+                Category
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to "All Jobs", jobs_path
+                - Category.all.each do |category|
+                  %li= link_to category.name, jobs_path(category: category.name)
+            
             
                 
-    .container
+    .container-fluid
       - flash.each do |name, msg|
         = content_tag :div, msg, class: "alert"
       = yield 
