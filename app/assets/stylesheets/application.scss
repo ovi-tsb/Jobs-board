@@ -131,6 +131,12 @@ h3 {
 }
 .alert {
   color: #fff;
+  position: fixed;
+  width: 100%;
+  background-color: rgba(38, 150, 109, 0.4);
+  top: 60px;
+  left: 0;
+  z-index: 10;
 }
 .carousel {
   margin-top: -20px;
