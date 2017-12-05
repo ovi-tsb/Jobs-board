@@ -31,7 +31,7 @@
           %ul.nav.navbar-nav.navbar-right
             %li
               = form_tag jobs_path, method: :get, local: true, class: 'input-group'  do
-                = text_field_tag(:q ,"" , placeholder: "  Search .. ", class: 'Search')
+                = text_field_tag(:q ,"" , placeholder: "  Search .. ", class: 'search')
                 = submit_tag("Search", name: nil, class: "btn btn-sm btn-default")
           %ul.nav.navbar-nav.navbar-left.category-nav
             %li.dropdown

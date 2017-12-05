@@ -2,15 +2,15 @@
   .carousel.slide{:id=>"slide-images", :data => {:ride => "carousel"}}
     .carousel-inner
       .item.active
-        %img{:src => "assets/pexels-photo-297648.jpg", :alt => ""}/
+        %img{:src => "assets/pexels-photo-297648.jpg", :alt => "",:class => "img-responsive"}/
         .carousel-caption
           %h3 Job that you looking for
       .item
-        %img{:src => "assets/startup-photos.jpg", :alt => ""}/
+        %img{:src => "assets/startup-photos.jpg", :alt => "",:class => "img-responsive"}/
         .carousel-caption
           %h3 Perfect time 
       .item
-        %img{:src => "assets/woman-hand-smartphone-desk.jpg", :alt => ""}/
+        %img{:src => "assets/woman-hand-smartphone-desk.jpg", :alt => "",:class => "img-responsive"}/
         .carousel-caption
           %h3 Best maching 
       
@@ -23,13 +23,13 @@
   .row
     .col-sm-12.col-md-6.col-xs-12
       .box
-        %button.btn.btn-sm.btn-default= link_to"Looking for job ?", jobs_path
+        %button.btn.btn-sm.btn-default= link_to"Job Seekers", jobs_path
     .col-sm-12.col-md-6.col-xs-12
       .box
         - if user_signed_in?
-          %button.btn.btn-sm.btn-default= link_to"Create a job", new_job_path
+          %button.btn.btn-sm.btn-default= link_to"Employers", new_job_path
         - else
-          %button.btn.btn-sm.btn-default= link_to"Create a job", new_user_session_path
+          %button.btn.btn-sm.btn-default= link_to"Employers", new_user_session_path
 
 
 

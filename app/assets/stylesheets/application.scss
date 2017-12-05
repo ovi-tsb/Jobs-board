@@ -101,7 +101,6 @@ h3 {
 }
 .input-group {
   margin-top: 10px;
-  border: 0px solid green;
 }
 .time_stamp {
   color: #fff;
@@ -110,6 +109,19 @@ h3 {
   a {
     color : #fff;
 
+  }
+}
+.collapse {
+  .navbar-right {
+    .input-group {
+      .search {
+        line-height: 26px;
+        border: 1px solid rgba(38, 150, 109, 0.5);
+      }
+      .btn {
+        margin-bottom: 2px;
+      }
+    }
   }
 }
 .navbar-default {
